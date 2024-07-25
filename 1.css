@@ -1,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+}
+li, ul{
+  list-style: none;
+}
+
+body{
+  width: 100%;
+  background-color: beige;
+}
+div.header-container{
+  text-align: center;
+  font: 20px 'Courier New', Courier, monospace;
+}
+div.header-container div.logo{
+  font: 50px 'Courier New', Courier, monospace;
+  padding-bottom: 10px;
+}
+
+div.header-container nav{
+  border: 1px solid;
+  display: flex;
+  justify-content: space-around;
+}
+div.header-container nav a{
+  color: black;
+}
+footer{
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  display: block;
+}
