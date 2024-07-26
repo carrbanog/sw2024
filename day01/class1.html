@@ -11,6 +11,15 @@
     tr{
       background-color: white;
     }
+    div{
+      height: 95vh;
+    }
+    div:nth-child(1){
+      background-color: red;
+    }
+    div:nth-child(2){
+      background-color: aqua;
+    }
   </style>
 </head>
 <body>
@@ -31,5 +40,27 @@
       <td>c3</td>
     </tr>
   </table>
+  <hr>
+  <p>
+    절대경로<br>
+    <a href="http://www.naver.com">네이버</a>
+    <a href="http://www.google.com">구글</a>
+  </p>
+  <hr>
+  <p>
+    아이디 경로<br>
+    <!-- 상대경로 링크 지정 -->
+    <a href="#n1">n1</a>
+    <a href="#n2">n2</a>
+    <a href="#n3">n3</a>
+    <a href="#n4">n4</a>
+
+  </p>
+  <div>
+    <div id="n1">N1</div>
+    <div id="n2">N2</div>
+    <div id="n3">N3</div>
+    <div id="n4">N4</div>
+  </div>
 </body>
 </html>
