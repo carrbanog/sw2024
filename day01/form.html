@@ -19,8 +19,9 @@
     #thead{
       background-color: orange;
     }
-    .col{
-      border: none;
+    img{
+      width: 100px;
+      height: 100px;
     }
   </style>
 </head>
@@ -33,8 +34,8 @@
     <input type="text" id="department"><br>
     <label for="position">직책</label>
     <input type="text" id="position"><br>
-    <label for="photo">사진</label>
-    <button id="photo">파일 선택</button><br>
+    <label for="photo">사진</label><br>
+    <input type="file"><br>
     <button id="newBtn">
       새 사원 추가
     </button>
@@ -48,15 +49,15 @@
   </form>
   <table border="1" width="800" height="" >
     <tr id="thead" height="50">
-      <td><input type="checkbox"></td>
-      <td colspan="2">번호</td><td colspan="8">사진</td>
-      <td colspan="4">사원명</td>
-      <td colspan="4">부서</td><td>직급</td>
-      <td>수정</td><td>삭제</td>
+      <th><input type="checkbox"></th>
+      <th colspan="2">번호</th><th colspan="8">사진</th>
+      <th colspan="4">사원명</th>
+      <th colspan="4">부서</th><th>직급</th>
+      <th>수정</th><th>삭제</th>
     </tr>
     <tr height="100">
       <td rowspan="5"><input type="checkbox"></td>
-      <td rowspan ="5" colspan="2">1041</td><td colspan="8"><img src="../pr/skylin1e.jpg"alt="사진"></td>
+      <td rowspan ="5" colspan="2">1041</td><td colspan="8"><img src="../pr/skyline.jpg"alt="사진"></td>
       <td colspan="4">홍길동</td><td colspan="4">개발</td><td>대리</td>
       <td rowspan="5"><button>edit</button></td>
       <td rowspan="5"><button>delete</button></td>
