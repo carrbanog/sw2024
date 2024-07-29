@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <label for="message">메모:</label>
+    <input type="text" id="message">
+  </form>
+    <label for="search">검색:</label>
+    <input type="text" id="search">
+    <button id="searchBtn">search</button>
+  <table id="tableList" border="1"  width="550">
+    <thead>
+      <tr>
+        <th>확인</th>
+        <th>할일</th>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+    <tbody id="demo"></tbody>
+      <!-- <tr>
+        <td><input type="checkbox"></td>
+        <td>개 밥 주기</td>
+        <td>수정</td>
+        <td>삭제</td>
+      </tr> -->
+    
+  </table>
+  <script>
+    const form = document.querySelector("form");
+    const demo = document.querySelector("#demo");
+    const message = document.querySelector("#message");
+    const search = document.querySelector("#search");
+    const searchBtn = document.querySelector("#searchBtn");
+    const delBtn = document.querySelector("#delBtn")
+    const todoList = [
+      // {seq:101, title:"공부하기", done:"false"},
+      // {seq:102, title:"포트폴리오", done:"false"},
+      // {seq:103, title:"팀 프로젝트", done:"false"},
+      // {seq:104, title:"선물", done:"false"},
+    ]
+    let seqCnt = 0;
+
+  //   function searchTodoTitle(){
+  //     for(i=0; i < todoList.length; i++){
+  //       let todoListTitle = todoList[i].title;
+  //       return todoListTitle;
+  //       console.log(todoListTitle);
+  //     }
+  //   }
+  //   searchBtn.addEventListener("click", () => {
+  //     for(i=0; i < todoList.length; i++){
+  //       let todoListTitle = todoList[i].title;
+  //       console.log(todoListTitle);
+  //   }}
+  // )
+    delBtn.addEventListener("click", handleDelEvt)
+    function handleDelEvt(event){
+      const delButton = (event.target.parentElement).parentElement
+      console.log(delButton);
+
+    }
+    function drawList(){
+      demo.innerHTML = "";
+      todoList.forEach((todoObj) => {
+        // console.log(todoObj.seq, todoObj.title, todoObj.done);
+        demo.innerHTML += 
+      `<tr>
+        <td><input type="checkbox"></td>
+        <td>${todoObj.title}</td>
+        <td>수정</td>
+        <td><button class="delBtn">삭제</button></td>
+      </tr>`
+      })
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      todoList.push({seq:seqCnt, title:message.value, done:"false"});
+      seqCnt++;
+      // console.log(todoList)
+      drawList();
+      message.value = "";
+    })  
+  </script>
+</body>
+</html>
