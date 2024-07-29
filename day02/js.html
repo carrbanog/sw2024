@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  
+  <p id="demo">JavaScript can change HTML content.</p>
+  <button id="changeBtn">Change</button>
+  <button id="resetBtn">reset</button>
+  <form action="">
+    <label for="message">메모:</label>
+    <input type="text" id="message">
+    <button>button</button>
+  </form>
+
+
+
+  <script>
+    const changeBtn = document.querySelector("#changeBtn");
+    const resetBtn = document.querySelector("#resetBtn");
+    const demo = document.querySelector("#demo");
+    const form = document.querySelector("form");
+    const message = document.querySelector("#message");
+
+    changeBtn.addEventListener("click", () => {
+      demo.innerHTML = "javascript";
+      document.body.style.backgroundColor = "beige";
+    });
+
+    resetBtn.addEventListener("click", () => {
+      document.body.style.backgroundColor = "#666"; 
+      // demo.innerHTML = message.value
+    })
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      demo.innerText = message.value;
+      message.value = ""
+    })
+    
+    //== -> 대충 비슷한거, === 완전 똑같은거
+
+    // message.addEventListener("keydown", (event) => {
+    //   if(event.key === "Enter"){
+    //     event.preventDefault();
+    //     demo.innerText = message.value;
+    //     message.value = ""
+    //   }
+    // })
+  </script>
 </body>
 </html>
