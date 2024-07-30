@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <label for="message">메모:</label>
+    <input type="text" id="message">
+  </form>
+    검색: <input type="text" id="search">
+    <button id="searchBtn">search</button>
+  <table id="tableList" border="1"  width="550">
+    <thead>
+      <tr>
+        <th>확인</th>
+        <th>할일</th>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+    <tbody id="demo"></tbody>
+      <!-- <tr>
+        <td><input type="checkbox"></td>
+        <td>개 밥 주기</td>
+        <td>수정</td>
+        <td>삭제</td>
+      </tr> -->
+    
+  </table>
+  <script>
+    const form = document.querySelector("form");
+    const demo = document.querySelector("#demo");
+    const message = document.querySelector("#message");
+    const search = document.querySelector("#search");
+    const searchBtn = document.querySelector("#searchBtn");
+    const delBtn = document.querySelector("#delBtn")
+    let todoList = [
+      // {seq:101, title:"공부하기", done:"false"},
+      // {seq:102, title:"포트폴리오", done:"false"},
+      // {seq:103, title:"팀 프로젝트", done:"false"},
+      // {seq:104, title:"선물", done:"false"},
+    ]
+    let seqCnt = 0;
+
+    function drawList(){
+      demo.innerHTML = "";
+      todoList.forEach((todoObj) => {
+        // console.log(todoObj.seq, todoObj.title, todoObj.done);
+        demo.innerHTML += 
+      `<tr>
+        <td><input type="checkbox"></td>
+        <td>${todoObj.title}</td>
+        <td><button onclick="">수정</button></td>
+        <td><button onclick="deleteList(${todoObj.seq})">삭제</button></td>
+      </tr>`
+      })
+    }
+
+    function deleteList(seq){
+      todoList = todoList.filter(deleteTargetBtn);
+      // console.log(todoList)
+      // console.log(todoObj);
+      function deleteTargetBtn(todoObj){
+        return todoObj.seq !== seq;
+        console.log(todoList);
+        //todoObj.seq랑 seq 가 같으니 false -> todoList에서 삭제
+      }
+      drawList();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      todoList.push({seq:seqCnt, title:message.value, done:"false"});
+      seqCnt++;
+      // console.log(todoList)
+      drawList();
+      message.value = "";
+    })  
+    searchBtn.addEventListener("click", () => {
+      const todo = todoList.filter(e => e.title.includes(search.value))
+      const backup = todoList;
+      todoList = todo;
+      console.log(todoList)
+      drawList();
+      todoList = backup;
+    });
+
+  </script>
+</body>
+</html>

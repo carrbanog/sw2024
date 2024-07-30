@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    div.container{
+      width: 1000px;
+      margin: auto;
+    }
+    div.middle{
+      overflow: hidden;
+    }
+
+    div.header{
+      height: 100px;
+    }
+    div.header div{
+      height: 50px;
+    }
+
+    div.middle{
+      height: 300px;
+    }
+    div.footer{
+      height: 100px;
+    }
+    div.middle > div:nth-child(1){
+      width: 180px;
+    }
+    div.middle > div:nth-child(2){
+      width: 590px;
+    }
+    div.middle > div:nth-child(3){
+      width: 180px;
+    }
+    div.middle > div{
+      float: left;
+      height: 300px;
+      text-align: center;
+    }
+    div.middle div div{
+      background-color: beige;
+      float: left;
+    }
+    .middle1{
+      width: 580px;
+      height: 130px;
+      margin-bottom: 10px;
+    }
+
+    .middle2{
+      width: 270px;
+      height: 130px;
+      margin-right: 10px;
+    }
+
+    .middle3{
+      width: 270px;
+      height: 130px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div></div>
+    </div>
+    <div class="middle">
+      <div></div>
+      <div>
+        <div class="middle1"></div>
+        <div class="middle2"></div>
+        <div class="middle3"></div>
+      </div>
+      <div></div>
+    </div>
+    <div class="footer"></div>
+  </div>
+</body>
+</html>
