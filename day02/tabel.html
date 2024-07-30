@@ -10,8 +10,7 @@
     <label for="message">메모:</label>
     <input type="text" id="message">
   </form>
-    <label for="search">검색:</label>
-    <input type="text" id="search">
+    검색: <input type="text" id="search">
     <button id="searchBtn">search</button>
   <table id="tableList" border="1"  width="550">
     <thead>
@@ -38,7 +37,7 @@
     const search = document.querySelector("#search");
     const searchBtn = document.querySelector("#searchBtn");
     const delBtn = document.querySelector("#delBtn")
-    const todoList = [
+    let todoList = [
       // {seq:101, title:"공부하기", done:"false"},
       // {seq:102, title:"포트폴리오", done:"false"},
       // {seq:103, title:"팀 프로젝트", done:"false"},
@@ -46,37 +45,30 @@
     ]
     let seqCnt = 0;
 
-  //   function searchTodoTitle(){
-  //     for(i=0; i < todoList.length; i++){
-  //       let todoListTitle = todoList[i].title;
-  //       return todoListTitle;
-  //       console.log(todoListTitle);
-  //     }
-  //   }
-  //   searchBtn.addEventListener("click", () => {
-  //     for(i=0; i < todoList.length; i++){
-  //       let todoListTitle = todoList[i].title;
-  //       console.log(todoListTitle);
-  //   }}
-  // )
-    delBtn.addEventListener("click", handleDelEvt)
-    function handleDelEvt(event){
-      const delButton = (event.target.parentElement).parentElement
-      console.log(delButton);
-
-    }
-    function drawList(){
+    function drawList(searchTitle = todoList){
       demo.innerHTML = "";
-      todoList.forEach((todoObj) => {
+      searchTitle.forEach((todoObj) => {
         // console.log(todoObj.seq, todoObj.title, todoObj.done);
         demo.innerHTML += 
       `<tr>
         <td><input type="checkbox"></td>
         <td>${todoObj.title}</td>
-        <td>수정</td>
-        <td><button class="delBtn">삭제</button></td>
+        <td><button onclick="">수정</button></td>
+        <td><button onclick="deleteList(${todoObj.seq})">삭제</button></td>
       </tr>`
       })
+    }
+
+    function deleteList(seq){
+      todoList = todoList.filter(deleteTargetBtn);
+      // console.log(todoList)
+      // console.log(todoObj);
+      function deleteTargetBtn(todoObj){
+        return todoObj.seq !== seq;
+        console.log(todoList);
+        //todoObj.seq랑 seq 가 같으니 false -> todoList에서 삭제
+      }
+      drawList();
     }
 
     form.addEventListener("submit", (event) => {
@@ -87,6 +79,13 @@
       drawList();
       message.value = "";
     })  
+    searchBtn.addEventListener("click", searchList);
+    function searchList(){
+      const searchTitle = todoList.filter((todoObj) => {
+        return todoObj.title.includes(search.value)
+      })
+      drawList(searchTitle)
+    }
   </script>
 </body>
 </html>

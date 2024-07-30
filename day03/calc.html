@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input{
+      width: 20px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="num1">
+  <select name="" id="oper" >
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <input type="text" id="num2">
+  <button class="resultBtn">=</button>
+  <span class="resultArea">0</span>
+  <script>
+    const num1 = document.querySelector("#num1");
+    const num2 = document.querySelector("#num2");
+    const oper = document.querySelector("#oper");
+    const resultBtn = document.querySelector(".resultBtn");
+    const resultArea = document.querySelector(".resultArea");
+
+
+    resultBtn.addEventListener("click", calculate);
+
+    function calculate(){
+      switch(oper.value){
+      case "+":
+        result = parseInt(num1.value) + parseInt(num2.value);
+        resultArea.innerHTML = result;
+        break
+      break;
+      case "-":
+        result = parseInt(num1.value) - parseInt(num2.value);
+        resultArea.innerHTML = result;
+      break;
+      case "*":
+        result = parseInt(num1.value) * parseInt(num2.value);
+        resultArea.innerHTML = result;
+
+      break;
+      case "/":
+        result = parseInt(num1.value) / parseInt(num2.value);
+        resultArea.innerHTML = result;
+      break;
+    }
+    if(result < 0){
+      alert("음수입니다.");
+      num1.value ="";
+      num2.value = "";
+      resultArea.innerHTML = "0";
+    }
+  }
+  </script>
+</body>
+</html>
