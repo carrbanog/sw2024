@@ -74,6 +74,7 @@
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       todoList.push({seq:seqCnt, title:message.value, done:"false"});
+      localStorage.setItem("todos", JSON.stringify(todoList));
       seqCnt++;
       // console.log(todoList)
       drawList();
@@ -87,7 +88,21 @@
       drawList();
       todoList = backup;
     });
+    const savedTodos = localStorage.getItem("todos");
+    if(savedTodos !== null){
+      const parsedTodos = JSON.parse(savedTodos);
+      console.log(parsedTodos);
+      todoList = parsedTodos;
+      for(i = 0; i < todoList.length; i++){
+        seqCnt = parsedTodos[i].seq;
+        seqCnt++;
+        // console.log(seqCnt)
+      }
+        console.log(seqCnt)
 
+      drawList();
+      // seqCnt = 
+    }
   </script>
 </body>
 </html>

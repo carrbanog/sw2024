@@ -27,33 +27,9 @@
       </tr>
   </thead>
   <tbody id="tableBody">
-    <tr>
-      <td><input type="checkbox"></td>
-      <td></td>
-    </tr>
   </tbody>
   </table>
-  <script>
-    const memoForm = document.querySelector("#memoForm");
-    const searchForm = document.querySelector("#searchForm");
-    const noteTxt = document.querySelector("#noteTxt");
-    let tableBody = document.querySelector("#tableBody");
-    const todoList = []
-    let conSeq = 0;
-
-    function drawList(){
-      tableBody.innerHTML = ''
-    }
-
-    memoForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      todoList.push({seq:conSeq, title:noteTxt.value, done:false});
-      console.log(todoList);
-      drawList();
-    })
-    searchForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-    })
+  <script src="table3.js">
   </script>
 </body>
 </html>
