@@ -4,7 +4,7 @@ const noteTxt = document.querySelector("#noteTxt");
 let tableBody = document.querySelector("#tableBody");
 const savedTodos = localStorage.getItem("todos");
 let todoList = []
-let conSeq = 0;
+let seqCnt = 0;
 
 function drawList(){
   tableBody.innerHTML = "";
@@ -23,8 +23,8 @@ function drawList(){
 
 memoForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  todoList.push({seq:conSeq, title:noteTxt.value, done:false});
-  conSeq++;
+  todoList.push({seq:seqCnt, title:noteTxt.value, done:false});
+  seqCnt++;
   console.log(todoList);
   drawList();
   noteTxt.value = "";
@@ -36,6 +36,7 @@ searchForm.addEventListener("submit", (event) => {
 
 function deleteList(seq){
   todoList = todoList.filter((todoObj) => {
+    console.log(todoObj);
     return todoObj.seq !== seq;
   })
   drawList();
@@ -43,6 +44,11 @@ function deleteList(seq){
 if(savedTodos !== null){
   const parsedTodos = JSON.parse(savedTodos);
   todoList = parsedTodos;
-  console.log(parsedTodos)
+  console.log(parsedTodos);
+  for(i = 0; i < todoList.length; i++){
+    seqCnt = parsedTodos[i].seq;
+    seqCnt++;
+    // console.log(seqCnt)
+  }
   drawList();
 }
