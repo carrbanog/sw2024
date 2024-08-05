@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced JavaScript Loop Example</title>
+</head>
+<body>
+  <h1>숫자 맞추기</h1>
+  <form action="">
+    <label for="numTxt">숫자:</label>
+    <input type="text" id="numTxt">
+    <button id="numBtn">button</button>
+    <hr>
+    <div id="answer"></div>
+  </form>
+  <script>
+    const form = document.querySelector("form");
+    const numTxt = document.querySelector("#numTxt");
+    const numBtn = document.querySelector("#numBtn");
+    const answer = document.querySelector("#answer");
+    const randNum = Math.floor(Math.random() * 100) + 1;
+    let restNum = 5;
+    console.log(randNum);
+
+    form.addEventListener("submit", submitEvent);
+    function submitEvent(event){
+      event.preventDefault();
+      if(randNum == numTxt.value){
+        answer.innerHTML = "정답입니다.";
+      }
+      else if(randNum > numTxt.value){
+        answer.innerHTML = `${numTxt.value} 보다 큽니다.`
+        dCount(restNum);
+      }
+      else if(randNum < numTxt.value){
+        answer.innerHTML = `${numTxt.value} 보다 작습니다.`
+        dCount(restNum);
+      }
+    }
+
+    function dCount(){
+      restNum--;
+      if(restNum > 0){
+        answer.innerHTML += ` ${restNum}회 남았습니다.`
+      }else{
+        console.log("기회를 모두 사용했습니다.");
+        numTxt.disabled = true;
+        numBtn.disabled = true;
+      }
+    }
+  </script>
+</body>
+</html>
