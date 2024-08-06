@@ -16,12 +16,14 @@
     const randNum = Math.floor(Math.random() * 100) + 1;
     const answer = document.querySelector(".answer");
     let maxNum = 100;
+    let minNum = 1;
+    let restNum = 5;
     console.log(randNum);
 
     function draw(){
-      for(i = 1; i <= maxNum; i++){
+      for(i = minNum; i <= maxNum; i++){
       numSection.innerHTML += `<button id="num${i}" onclick="handleClick(${i})">${i}</button>`;
-    }
+      }
     }
     draw();
     function handleClick(i){
@@ -31,11 +33,25 @@
       else if(i > randNum){
         answer.innerHTML = `${i}보다 더 작습니다.`
         maxNum = i;
+        numSection.innerHTML = "";
         draw(i);
+        dCount();
       }
       else if(i < randNum){
-        answer.innerHTML = `${i}보다 더 큽니다.`
+        answer.innerHTML = `${i}보다 더 큽니다.`;
+        minNum = i;
+        numSection.innerHTML = "";
+        draw(i);
+        dCount();
       }
+    function dCount(){
+      restNum--;
+      if(restNum > 0){
+        answer.innerHTML += ` ${restNum}회 남았습니다.`
+      }else{
+        answer.innerHTML = `기회를 모두 사용했습니다. 정답:${randNum}`;
+      }
+    }
     }
   </script>
 </body>
