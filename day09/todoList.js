@@ -19,7 +19,7 @@ function submitList(event){
 
 function paintTodo(newTodoObj){
     const li = document.createElement("li");
-    li.id = newTodoObj.seq;
+    li.id = `todo${newTodoObj.seq}`;
     const span = document.createElement("span");
     const button = document.createElement("button");
     const checkbox = document.createElement("input");
